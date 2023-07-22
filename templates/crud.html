@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="w3-container">
+    <p class="w3-center"><i class="italic">Add a health service, delete a health service, or update information about a health service to provide website users with accurate information.</i></p>
+    <div class="w3-container w3-center w3-card-4">
+        <br>
+        {% for message in get_flashed_messages() %}
+            <p class="w3-red">{{ message }}</p>
+        {% endfor %}
+        <button type="button" class="w3-button w3-hover-teal" onclick="display('add')">Add Service<i class="fas fa-chevron-down"></i></button><br>
+        <div id="add" class="w3-center">
+            <br>
+            <form method="POST" enctype="multipart/form-data">
+                {{ add_form.csrf_token() }}
+                {{ add_form.form_type(value='add') }}
+                {{ add_form.name.label }}<br>
+                {{ add_form.name }}<br>
+                {{ add_form.blurb.label }}<br>
+                {{ add_form.blurb }}<br>
+                {{ add_form.accessibility.label }}<br>
+                {{ add_form.accessibility }}<br>
+                {{ add_form.location.label }}<br>
+                {{ add_form.location }}<br>
+                <br>
+                <button type="submit" class="w3-button w3-block w3-black">Add Service</button>
+            </form>
+            <br>
+        </div>
+        <button type="button" class="w3-button w3-hover-teal" onclick="display('delete')">Delete Service<i class="fas fa-chevron-down"></i></button><br>
+        <div id="delete" class="w3-center">
+            <br>
+            <form method="POST" enctype="multipart/form-data">
+                {{ delete_change_form.csrf_token() }}
+                {{ delete_change_form.form_type(value='delete') }}
+                {{ delete_change_form.health_services }}<br>
+                <br>
+                <button type="submit" class="w3-button w3-block w3-black">Delete Selected Service</button>
+            </form>
+            <br>
+        </div>
+        <button type="button" class="w3-button w3-hover-teal" onclick="display('change')">Change Service Information<i class="fas fa-chevron-down"></i></button><br>
+        <div id="change" class="w3-center">
+            <br>
+            <form method="POST" action="/crud" enctype="multipart/form-data">
+                {{ delete_change_form.csrf_token() }}
+                {{ delete_change_form.form_type(value='change') }}
+                {{ delete_change_form.health_services }}<br>
+                <br>
+                <button type="submit" class="w3-button w3-block w3-black">Update Selected Service</button>
+            </form>
+            <br>
+        </div>
+        <br>
+    </div>
+</div>
+<br>
+
+<script>
+    function display(section) {
+        var display_hidden = document.getElementById(section);
+        var displayed = window.getComputedStyle(display_hidden);
+        if (displayed["display"] === "none") {
+            display_hidden.style.display = "block";
+        } else {
+            display_hidden.style.display = "none";
+        }
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+<header class="w3-cell-row">
+  <div class="w3-container w3-cell w3-cell-middle w3-circle"><img src="static/images/basic_logo.png" class="w3-image"></div>
+  <div class="w3-container w3-cell w3-cell-middle"><h5>Website Name</h5></div>
+  {% if current_user.is_authenticated() %}
+    <div class="w3-container w3-cell w3-cell-middle"><a href="/logout" class="w3-btn w3-black w3-small w3-padding-small">Log Out</a></div>
+  {% else %}
+    <div class="w3-container w3-cell w3-cell-middle"><a href="/login" class="w3-btn w3-black w3-small w3-padding-small">Log In/Sign Up</a></div>
+  {% endif %}
+  </header>

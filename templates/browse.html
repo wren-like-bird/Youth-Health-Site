@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% if crud_option == "yes" %}
+  <br><div><a href="/crud" class="w3-block w3-button w3-black"><h3>Change Service Information</h3></a></div>
+{% endif %}
+
+{% if results %}
+  <br>
+  {% for item in results %}
+    <div class="w3-card-4 w3-teal">
+      <header class="w3-container w3-black w3-center">
+        <h3>{{ item.name }}</h3>
+      </header>
+      <div class="w3-container">
+        <p>{{ item.blurb }}</p>
+        <p><i class="fas fa-map-marker-alt"></i>{{ item.location }}</p><br>
+        <div class="w3-center">
+          <button type="button" class="w3-button w3-black w3-block" onclick="display(accessibility_{{ loop.index }})">Accessibility<i class="fas fa-chevron-down"></i></button>
+          <div id="accessibility_{{ loop.index }}" class="w3-black accessibility w3-container">
+            <p>{{ item.accessibility }}</p>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+    <br>
+  {% endfor %}
+{% else %}
+  <p class="w3-container">Nothing matched your search.</p>
+{% endif %}
+
+<script>
+  function display(element_id) {
+    var displayed = window.getComputedStyle(element_id);
+    if (displayed["display"] === "none") {
+      element_id.style.display = "block";
+    } else {
+      element_id.style.display = "none";
+    }
+  }
+</script>
+
+{% endblock %}

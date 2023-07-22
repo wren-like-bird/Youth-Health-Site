@@ -1,0 +1,36 @@
+.header {
+  height: 15%;
+}
+
+.logo_img {
+  width: 10%;
+}
+
+.homepage_img {
+  width: 100%;
+}
+
+.example_img {
+  width: 100%;
+}
+
+#districts, #include, #exclude, #searched_name, #add, #delete, #change, .accessibility {
+  display: none;
+  margin: auto;
+}
+
+#include, #exclude, #districts, #searched_name {
+  width: 50%;
+}
+
+i.fa-chevron-down {
+  margin-left: 4%;
+}
+
+i.fa-map-marker-alt {
+  margin-right: 2%;
+}
+
+.inline {
+  margin-left: 8px;
+}

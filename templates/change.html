@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+<div class = "w3-container">
+    <p class="w3-center"><i class="italic">Edit information about a specific health service.</i></p>
+    <div class="w3-container w3-center w3-card-4">
+        <br>
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token() }}
+            {{ form.name.label }}<br>
+            {{ form.name }}<br>
+            {{ form.blurb.label }}<br>
+            {{ form.blurb }}<br>
+            {{ form.accessibility.label }}<br>
+            {{ form.accessibility }}<br>
+            {{ form.location.label }}<br>
+            {{ form.location }}<br>
+            <br>
+            <button type="submit" class="w3-button w3-block w3-black">Change Service Information</button>
+            <br>
+        </form>
+    </div>
+    <br>
+</div>
+
+{% endblock %}

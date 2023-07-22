@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="w3-container">
+  <p class="w3-center"><i class="italic">Fill in as much or as little information as you'd like below and we'll do our best to match you with the right services.</i></p>
+  <form class="w3-container w3-center w3-card-4">
+    <button type="button" class="w3-button w3-hover-teal" onclick="display('name')">Enter Name or Keyword<i class="fas fa-chevron-down"></i></button>
+    <div id="searched_name">
+      <input class="w3-input w3-border w3-round" type="text" name="searched_name" id="searched_name">
+    </div>
+    <button type="button" class="w3-button w3-hover-teal" onclick="display('districts')">Choose Districts<i class="fas fa-chevron-down"></i></button>
+    <div id="districts" class="w3-left-align">
+      <input class="w3-check" type="checkbox" name="districts" value="Selwyn">
+      <label>Selwyn</label><br>
+      <input class="w3-check" type="checkbox" name="districts" value="Ilam">
+      <label>Ilam</label><br>
+      <input class="w3-check" type="checkbox" name="districts" value="Riccarton">
+      <label>Riccarton</label><br>
+      <input class="w3-check" type="checkbox" name="districts" value="Waltham">
+      <label>Waltham</label>
+    </div>
+    <button type="button" class="w3-button w3-hover-teal" onclick="display('include')">Include Services That<i class="fas fa-chevron-down"></i></button>
+    <div id="include">
+      <input class="w3-check" type="checkbox" name="include" value="Recognises Community Card Holders">
+      <label>Recognise Community Card Holders</label>
+    </div>
+    <button type="button" class="w3-button w3-hover-teal" onclick="display('exclude')">Exclude Services That<i class="fas fa-chevron-down"></i></button>
+    <div id="exclude">
+      <input class="w3-check" type="checkbox" name="exclude" value="Higher Fees for Non-Residents">
+      <label>Have Higher Fees for Non-Residents</label>
+    </div>
+    <br>
+    <input type="submit" value="Search" class="w3-btn w3-black w3-block">
+    <br>
+  </form>
+  <br>
+</div>
+
+<script>
+  function display(section) {
+    var display_hidden = document.getElementById(section);
+    var displayed = window.getComputedStyle(display_hidden);
+    if (displayed["display"] === "none") {
+      display_hidden.style.display = "block";
+    } else {
+      display_hidden.style.display = "none";
+    }
+  }
+</script>
+
+{% endblock %}

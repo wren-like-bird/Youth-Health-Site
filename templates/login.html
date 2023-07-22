@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+<div class="w3-container">
+  <form class="form_signin w3-card-4 w3-teal" method="POST" action="/login">
+    <div class="w3-center">
+      <header class="w3-black w3-container">
+        <h3>Log in or<a href="/sign_up" class="inline">Create Account</a></h3>
+      </header>
+      <div class="w3-container">
+        <br>
+        {% for message in get_flashed_messages() %}
+          <p class="w3-red">{{ message }}</p>
+        {% endfor %}
+        {{ form.hidden_tag() }}
+        <div>{{ form.username.label }}<br></div>
+        <div class="w3-block">{{ form.username }}</div>
+        <br>
+        <div>{{ form.password.label }}<br></div>
+        <div class="w3-block">{{ form.password }}</div>
+        <br>
+        <label>{{ form.remember_me.label }}</label>
+        {{ form.remember_me }}<br><br>
+        <button type="submit" class="w3-button w3-block w3-black">Log in</button>
+      </div>
+    </div>
+    <br>
+  </form>
+</div>
+<br>
+
+{% endblock %}
